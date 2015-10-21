@@ -37,12 +37,11 @@ create table tblDelivery(
     id INTEGER NOT NULL AUTO_INCREMENT,
     orderIdFk INTEGER NOT NULL,
     userIdFk INTEGER NOT NULL,
-    receiver_address VARCHAR(500) NOT NULL,
-	receiver_zipcode VARCHAR(20) NOT NULL,
-	receiver_city VARCHAR(100) NOT NULL,
-	receiver_state VARCHAR(100) NOT NULL,
-    receiver_name VARCHAR(100) NOT NULL,
-    deliveryDate DATETIME NOT NULL,
+    receiverAddress VARCHAR(500) NOT NULL,
+	receiverZipcode VARCHAR(20) NOT NULL,
+	receiverCity VARCHAR(100) NOT NULL,
+	receiverState VARCHAR(100) NOT NULL,
+    deliveryDate DATE NOT NULL,
     deliveryStatus VARCHAR(50),
     PRIMARY KEY(id)
 );
@@ -62,6 +61,10 @@ INSERT INTO tblUser(id, passw, contactName, email, zipCode, state, city, address
 INSERT INTO tblUser(id, passw, contactName, email, zipCode, state, city, address, phoneNumber) VALUES(9, 'p9', 'name_09', 'email_09@email.com', '37540-000', 'Minas Gerais', 'Santa Rita do Sapucai', 'Rua koko, 9', '35-1234-9876');
 
 
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (1, 1, 1, 'Rua lala , 1', '37540000', 'Santa Rita do Sapucai', 'MG', CURDATE(), 'PENDING');
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (2, 2, 1, 'Rua lala , 1', '37540000', 'Santa Rita do Sapucai', 'MG', CURDATE(), 'PENDING');
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (3, 3, 2, 'Rua lili , 2', '37550000', 'Pouso Alegre', 'MG', CURDATE(), 'PENDING');
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (4, 4, 3, 'Rua lolo , 3', '37560000', 'Silvianopolis', 'MG', CURDATE(), 'PENDING');
 
 
 
