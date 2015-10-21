@@ -1,0 +1,31 @@
+{
+  "name": "trabalho-dm107",
+  "version": "1.0.0",
+  "description": "Trabalho da disciplina DM107 Inatel",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucianoctrl8/trabalho-dm107.git"
+  },
+  "keywords": [
+    "dm107",
+    "trabalho",
+    "inatel",
+    "nodejs",
+    "api"
+  ],
+  "author": "Luciano e Henrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucianoctrl8/trabalho-dm107/issues"
+  },
+  "homepage": "https://github.com/lucianoctrl8/trabalho-dm107#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  }
+}
