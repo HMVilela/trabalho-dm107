@@ -6,7 +6,7 @@ var notFound = function(res){
     res.status(404).send('Not found!');
 };
 
-
+// get por id da tblUser
 router.get('/:id', function(req, res) {
     var sql = 'SELECT * FROM tblUser WHERE id = ' + req.params.id + ' ;';
     conn.query(sql, function(err, rows, fields){
@@ -23,7 +23,7 @@ router.get('/:id', function(req, res) {
         }
     });
 });
-
+// retorna todos os usuarios em tblUser
 router.get('/', function(req, res){
     var sql = "SELECT * FROM tblUser";
     conn.query(sql, function(err, rows, fields){
@@ -40,7 +40,7 @@ router.get('/', function(req, res){
         }
     });
 });
-
+// insert na tblUser com base no objeto vindo por parametro
 router.post('/', function(req, res){
     var obj = req.body;
     var sql = 'INSERT INTO tblUser SET ?';
@@ -54,7 +54,7 @@ router.post('/', function(req, res){
         }
     });
 });
-
+// update na tblUser via id
 router.put('/:id', function(req, res){
     var obj = req.body;
     if(req.params.id != obj.id){
@@ -74,7 +74,7 @@ router.put('/:id', function(req, res){
         });
     }
 });
-
+// delete por id da tblUser
 router.delete('/:id', function(req, res){
     var sql = "DELETE FROM tblUser WHERE id = " + req.params.id;
     conn.query(sql, function(err, result){

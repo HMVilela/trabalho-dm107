@@ -23,7 +23,7 @@ router.get('/:id', function(req, res) {
         }
     });
 });
-
+// retorna uma entrega com base no orderIdFk e userIdFk
 router.get('/:orderIdFk/:userIdFk', function(req, res) {
     var sql = 'SELECT * FROM tblDelivery WHERE orderIdFk = ' + req.params.router.get('/:orderIdFk/:userIdFk', function(req, res) {
  + ' AND userIdFk = ' + req.params.userIdFk + ' ;';
@@ -41,7 +41,7 @@ router.get('/:orderIdFk/:userIdFk', function(req, res) {
         }
     });
 });
-
+// retorna todas as informacoes em tblDelivery
 router.get('/', function(req, res){
     var sql = "SELECT * FROM tblDelivery";
     conn.query(sql, function(err, rows, fields){
@@ -58,7 +58,8 @@ router.get('/', function(req, res){
         }
     });
 });
-
+    
+// insert na tblDelivery com base no objeto vindo por parametro
 router.post('/', function(req, res){
     var obj = req.body;
     var sql = 'INSERT INTO tblDelivery SET ?';
@@ -73,6 +74,7 @@ router.post('/', function(req, res){
     });
 });
 
+// update na tblDelivery via orderIdFk e userIdFk
 router.put('/:id/:orderIdFk/:userIdFk', function(req, res){
     var obj = req.body;
     if(req.params.id != obj.id || req.params.orderIdFk != obj.orderIdFk || req.params.userIdFk != obj.userIdFk){
