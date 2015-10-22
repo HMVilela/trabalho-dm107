@@ -1,16 +1,13 @@
 var mysql = require('mysql');
-
-var conn = mysql.createConnection('mysql://root:mysql@127.0.0.1/dm107_lh_root');
-
-     
-var getConnection = conn.connect(function(err, res){
+//var conn = mysql.createConnection('mysql://root:mysql@127.0.0.1/dm107_lh_root');
+var conn = mysql.createConnection('mysql://root:@127.0.0.1/dm107_lh_root');
+    
+var getConnection = conn.connect(function(err){
     if(!err){
-        console.log('DB connected');
+        console.log('Database is connected');
     }else{
-        console.log('DB error.');
-        res.status(503).send(err);
+        console.log('Error. Database is not connected.');
     }
 });
-
 
 module.exports = conn;
