@@ -9,15 +9,18 @@ use dm107_lh_root -u root -p;
 -----------------------------------------------------------
 -- Drop tables
 drop table tblDelivery;
+drop table tblOrder;
 drop table tblUser;
 
 -----------------------------------------------------------
 -- Delete tables
 delete from tblDelivery;
+delete from tblOrder;
 delete from tblUser;
 
 -----------------------------------------------------------
 -- Create tables
+-- tabela de usuarios
 create table tblUser(
     id INTEGER NOT NULL AUTO_INCREMENT,
     email VARCHAR(100) UNIQUE NOT NULL,
@@ -30,7 +33,13 @@ create table tblUser(
     phoneNumber VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
 );
-
+-- tabela de pedidos
+create table tblOrder(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    userIdFk INTEGER NOT NULL,
+    orderStatus VARCHAR(50) NOT NULL,
+    PRIMARY KEY(id)
+);
 
 -- tabela referente as entregas dos produtos
 create table tblDelivery(
@@ -38,11 +47,10 @@ create table tblDelivery(
     orderIdFk INTEGER NOT NULL,
     userIdFk INTEGER NOT NULL,
     receiverAddress VARCHAR(500) NOT NULL,
-	receiverZipcode VARCHAR(20) NOT NULL,
-	receiverCity VARCHAR(100) NOT NULL,
-	receiverState VARCHAR(100) NOT NULL,
-    deliveryDate DATE NOT NULL,
-    deliveryStatus VARCHAR(50),
+    receiverCpf VARCHAR(50) NOT NULL,
+    receiverIsBuyer BOOLEAN NOT NULL,
+    deliveryDateTime DATETIME NOT NULL,
+    geolocation VARCHAR(50),
     PRIMARY KEY(id)
 );
 
@@ -60,11 +68,13 @@ INSERT INTO tblUser(id, passw, contactName, email, zipCode, state, city, address
 INSERT INTO tblUser(id, passw, contactName, email, zipCode, state, city, address, phoneNumber) VALUES(8, 'p8', 'name_08', 'email_08@email.com', '37540-000', 'Minas Gerais', 'Santa Rita do Sapucai', 'Rua kiki, 8', '35-1234-0987');
 INSERT INTO tblUser(id, passw, contactName, email, zipCode, state, city, address, phoneNumber) VALUES(9, 'p9', 'name_09', 'email_09@email.com', '37540-000', 'Minas Gerais', 'Santa Rita do Sapucai', 'Rua koko, 9', '35-1234-9876');
 
+INSERT INTO tblOrder(id, userIdFk, orderStatus) VALUES(1, 1, 'PENDING');
+INSERT INTO tblOrder(id, userIdFk, orderStatus) VALUES(2, 1, 'PENDING');
+INSERT INTO tblOrder(id, userIdFk, orderStatus) VALUES(3, 2, 'PENDING');
 
-INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (1, 1, 1, 'Rua lala , 1', '37540000', 'Santa Rita do Sapucai', 'MG', CURDATE(), 'PENDING');
-INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (2, 2, 1, 'Rua lala , 1', '37540000', 'Santa Rita do Sapucai', 'MG', CURDATE(), 'PENDING');
-INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (3, 3, 2, 'Rua lili , 2', '37550000', 'Pouso Alegre', 'MG', CURDATE(), 'PENDING');
-INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverZipcode, receiverCity, receiverState, deliveryDate, deliveryStatus) VALUES (4, 4, 3, 'Rua lolo , 3', '37560000', 'Silvianopolis', 'MG', CURDATE(), 'PENDING');
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverCpf, receiverIsBuyer, deliveryDateTime, geolocation) VALUES (1, 1, 1, 'Rua lala , 1', '0123456789-01', true, CURDATE(), '14444654445');
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverCpf, receiverIsBuyer, deliveryDateTime, geolocation) VALUES (2, 2, 1, 'Rua lala , 1', '6454613214-01', false, CURDATE(), '7798444654');
+INSERT INTO tblDelivery(id, orderIdFk, userIdFk, receiverAddress, receiverCpf, receiverIsBuyer, deliveryDateTime, geolocation) VALUES (3, 3, 2, 'Rua lele , 2', '9876543210-22', true, CURDATE(), '666454113214');
 
 
 
